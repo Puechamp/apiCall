@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../auth/authProvider';
 import LogInOut from '../../auth/LogInOut';
+import './Comments.css';
 
 const Comments = () => {
   const { isAuthenticated } = useAuth();
