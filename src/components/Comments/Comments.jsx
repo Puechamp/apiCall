@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useAuth } from '../../auth/authProvider';
+import LogInOut from '../../auth/LogInOut';
 
-const Comments = ({ isLoggedIn }) => {
+const Comments = () => {
+  const { isAuthenticated } = useAuth();
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
 
@@ -19,19 +22,19 @@ const Comments = ({ isLoggedIn }) => {
   return (
     <div className="comments-section">
       <h2>Comments</h2>
-      {isLoggedIn ? (
+      {isAuthenticated ? (
         <form onSubmit={handleCommentSubmit}>
           <textarea
             value={newComment}
             onChange={handleCommentChange}
-            placeholder="Write a comment..."
-            required
+            placeholder="Leave a comment"
           />
           <button type="submit">Submit</button>
         </form>
       ) : (
-        <p>Please log in to leave a comment.</p>
+        <p>You must be logged in to leave a comment.</p>
       )}
+      <LogInOut />
       <div className="comments-list">
         {comments.map((comment, index) => (
           <div key={index} className="comment">
