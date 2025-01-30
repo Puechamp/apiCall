@@ -1,7 +1,20 @@
+import { useAuth } from '../auth/authProvider';
+import LogInOut from '../auth/LogInOut';
+import Comments from '../components/Comments/Comments';
+
 export default function Home() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
-      <h1>Page claqué 666</h1>
+      <h1>Welcome to the Home Page</h1>
+      <LogInOut />
+      {isAuthenticated && (
+        <div>
+          <h2>Leave a Comment</h2>
+          <Comments />
+        </div>
+      )}
     </>
   );
 }
