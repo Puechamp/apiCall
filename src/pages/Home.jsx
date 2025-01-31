@@ -1,4 +1,3 @@
-import { useAuth } from '../auth/AuthProvider';
 import LogInOut from '../auth/LogInOut';
 import Comments from '../components/Comments/Comments';
 
